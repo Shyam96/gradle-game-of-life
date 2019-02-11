@@ -15,20 +15,6 @@
     <version>1.0.${build.number}</version>
     <packaging>war</packaging>
     <name>gameoflife</name>
-	
-	<profiles>
-        <profile>
-            <id>jenkins-build</id>
-            <activation>
-                <property>
-                    <name>env.BUILD_NUMBER</name>
-                </property>
-            </activation>
-            <properties>
-                <build.number>${env.BUILD_NUMBER}</build.number>
-            </properties>
-        </profile>
-    </profiles>
 
     <properties>
         <build.number>local</build.number>
@@ -101,6 +87,17 @@
     </build>
 
     <profiles>
+        <profile>
+            <id>jenkins-build</id>
+            <activation>
+                <property>
+                    <name>env.BUILD_NUMBER</name>
+                </property>
+            </activation>
+            <properties>
+                <build.number>${env.BUILD_NUMBER}</build.number>
+            </properties>
+        </profile>
         <profile>
             <id>grunt</id>
             <build>
