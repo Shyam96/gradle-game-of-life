@@ -12,9 +12,27 @@
 
     <groupId>be.cegeka</groupId>
     <artifactId>gameoflife</artifactId>
-    <version>0.0.1</version>
+    <version>1.0.${build.number}</version>
     <packaging>war</packaging>
     <name>gameoflife</name>
+	
+	<profiles>
+        <profile>
+            <id>jenkins-build</id>
+            <activation>
+                <property>
+                    <name>env.BUILD_NUMBER</name>
+                </property>
+            </activation>
+            <properties>
+                <build.number>${env.BUILD_NUMBER}</build.number>
+            </properties>
+        </profile>
+    </profiles>
+
+    <properties>
+        <build.number>local</build.number>
+    </properties>
 
     <prerequisites>
         <maven>3.0.0</maven>
